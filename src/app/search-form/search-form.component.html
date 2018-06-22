@@ -1,0 +1,39 @@
+<ul class="tabs">
+	<li [ngClass]="{'active': isOneWayTicket}" (click)="isOneWayTicket = true">One Way</li>
+  <li [ngClass]="{'active': !isOneWayTicket}" (click)="isOneWayTicket = false">Return</li>
+</ul>
+
+<ul class="tab-content">
+	<!-- One Way Ticket Booking Form -->
+  <li [ngClass]="{'active': isOneWayTicket}">
+    <div class="content">
+      <form>
+        <input type="text" name="origin" placeholder="Enter Origin" [(ngModel)]="origin">
+        <input type="text" name="destination" placeholder="Enter Destination" [(ngModel)]="destination">
+        <input type="date" name="departure_date" placeholder="Departure Date" [(ngModel)]="departure_date">
+        <input type="number" name="passengers" placeholder="Passengers" [(ngModel)]="passengers">
+        <input type="button" value="Search" name="search" (click)="searchFlight()">
+      </form>
+    </div>
+  </li>
+	<!-- Return Ticket Booking Form -->
+  <li [ngClass]="{'active': !isOneWayTicket}">
+    <div class="content">
+      <form>
+				<input type="text" name="origin" placeholder="Enter Origin" [(ngModel)]="origin">
+        <input type="text" name="destination" placeholder="Enter Destination" [(ngModel)]="destination">
+        <input type="date" name="departure_date" placeholder="Departure Date" [(ngModel)]="departure_date">
+				<input type="date" name="arrival_date" placeholder="Arrival Date" [(ngModel)]="arrival_date">
+        <input type="number" name="passengers" placeholder="Passengers" [(ngModel)]="passengers">
+        <input type="button" value="Search" name="search" (click)="searchFlight()">
+      </form>
+    </div>
+  </li>
+</ul>
+
+<!-- Background Blur and Overlay for Sidebar search form -->
+<div class="blur">
+  <div class="overlay">
+
+  </div>
+</div>

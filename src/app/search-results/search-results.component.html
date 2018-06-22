@@ -1,0 +1,63 @@
+<button type="button" name="modify">Modify Search +</button>
+
+<!-- Page before finding flights -->
+<div class="get-started" [ngClass]="{'hidden': (flightResults?true:false)}">
+  <img src="assets/travel.svg" alt="">
+  <p>Let's get started by booking some flights!</p>
+</div>
+
+<!-- Page when No Flight Available -->
+<div class="get-started not-available" [ngClass]="{'hidden': (flightResults?.length == 0?false:true)}">
+  <img src="assets/not-available.svg" alt="">
+  <p>No flights available for your current search! Please try again.</p>
+</div>
+
+<!-- Current Flight Search Preferences -->
+<div class="search-preference">
+  <div>
+    <h3>{{journeyDetails.origin}}</h3><img src="assets/flight.svg" ><h3>{{journeyDetails.destination}}</h3>
+  </div>
+  <div>
+    <img src="assets/departures.svg" ><h3>{{journeyDetails.departure_date}}</h3>
+    <div [ngClass]="{'hidden': journeyDetails.isOneWayTicket}">
+      <img src="assets/arrivals.svg" ><h3>{{journeyDetails.arrival_date}}</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Current Flight Search Results -->
+<ul class="search-results">
+  <li *ngFor="let flight of flightResults">
+    <!-- Onward journey Details -->
+    <div class='travel-details'>
+      <span>{{flight.airlineCode}}-{{flight.flightNumber}}</span>
+      <div>
+        <h4>{{flight.origin}}</h4><img src="assets/black-plane.svg" ><h4>{{flight.destination}}</h4>
+      </div>
+      <div>
+        <img src="assets/departures.svg" ><h5>{{flight.departureTime}}</h5>
+      </div>
+      <div>
+        <img src="assets/arrivals.svg" ><h5>{{flight.arrivalTime}}</h5>
+      </div>
+    </div>
+    <!-- Return Journey Details -->
+    <div class='travel-details return' [ngClass]="{'hidden': journeyDetails.isOneWayTicket}">
+      <span>{{flight.airlineCode}}-{{flight.returnFlightNumber}}</span>
+      <div>
+        <h4>{{flight.destination}}</h4><img src="assets/black-plane.svg" ><h4>{{flight.origin}}</h4>
+      </div>
+      <div>
+        <img src="assets/departures.svg" ><h5>{{flight.returnDepartureTime}}</h5>
+      </div>
+      <div>
+        <img src="assets/arrivals.svg" ><h5>{{flight.returnArrivalTime}}</h5>
+      </div>
+    </div>
+
+    <div class="price-details">
+      <h3>₹ {{flight.price}}</h3>
+      <input type="submit" value="Book This Flight" name="book">
+    </div>
+  </li>
+</ul>

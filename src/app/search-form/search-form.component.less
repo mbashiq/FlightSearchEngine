@@ -1,0 +1,185 @@
+:host{
+  position: fixed;
+  height: calc(100% - 70px);
+  width: 400px;
+  top: 70px;
+  background: #ccc;
+  z-index: 1000;
+  transition: box-shadow 1s;
+  font-family: 'Product Sans';
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  @media (max-width: 1024px){
+    width: 360px;
+  }
+  @media (max-width: 850px){
+    width: 360px;
+    left: 50%;
+    margin-left: -190px;
+    height: auto;
+    padding: 25px 10px 40px 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
+  }
+  @media(max-width: 375px){
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media(max-width: 850px){
+  :host{
+    transform: translateY(0px);
+  }
+}
+
+//Background Blur
+div.blur{
+  filter: blur(10px);
+  background: url("../../assets/bg.jpg") no-repeat center;
+  background-size: cover;
+  position: absolute;
+  left: -20px;
+  right: 0px;
+  top: -20px;
+  bottom: -20px;
+  z-index: -1
+}
+div.overlay{
+  position: absolute;left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(100, 200, 200, 0.4);
+}
+
+ul, li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 999
+}
+
+// Tabs Styling
+ul.tabs{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #fff;
+  margin-top: 50px;
+  @media (max-width: 850px){
+    margin-top: 0px
+  }
+
+  li{
+    padding: 20px;
+    width: calc(80px);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid #021533;
+    color: #021533;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin: 10px 5px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      transition: all 0.3s ease-in-out;
+      background: #021533;
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    &:hover{
+      color: #fff;
+
+      &:before{
+        width: 100%;
+      }
+    }
+  }
+
+  li.active{
+    background: #021533;
+    color: #fff
+  }
+}
+
+// Tab Content Styling
+ul.tab-content{
+
+  li{
+    display: none;
+  }
+  li.active{
+    display: block;
+  }
+
+  form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+    input{
+      border: none;
+  		padding: 12px;
+  		background: #fff;
+  		font-size: 16px;
+  		margin: 4px 0px;
+      border-radius: 4px;
+  		width: 250px;
+  		font-weight: 100;
+      outline: none;
+      @media(max-width: 375px){
+        width: 200px;
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+
+    [type="button"]{
+      border: none;
+      width: auto;
+      padding: 10px 30px;
+      letter-spacing: 1px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 100;
+      margin-top: 15px;
+      outline: none;
+      color: #000;
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: #61c0bf;
+      border-bottom: 1px solid #2980B9;
+      box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.2);
+      transition: all 0.1s;
+      cursor: pointer;
+
+      &:hover{
+        opacity: 0.9
+      }
+    }
+  }
+}

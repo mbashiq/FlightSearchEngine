@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'app';
+  flightList = null;
+  isOneWayTicket = true;
+
+  journeyDetails = {
+    isOneWayTicket: true,
+    departure_date: "N/A",
+    arrival_date: "N/A",
+    origin: "N/A",
+    destination: "N/A"
+  };
+
+  //Functions to get value from child component to be sent to other child components
+  getFlightResults(flightResults){
+    this.flightList = flightResults;
+  }
+
+  getJourneyType(obj){
+    this.journeyDetails = obj;
+  }
 }

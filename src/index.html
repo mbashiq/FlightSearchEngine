@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>FlightSearchEngine</title>
+  <title>Flight Search Engine</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,5 +10,25 @@
 </head>
 <body>
   <app-root></app-root>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    if ($(window).width() < 850) {
+
+      $('button[name="modify"]').click(function(){
+        $('app-search-form').css({
+          "transform": "translateY(0px)"
+        });
+      });
+
+      $('input[name="search"]').click(function(){
+        $('app-search-form').css({
+          "transform": "translateY(-500px)"
+        });
+      });
+
+    }
+  });
+  </script>
 </body>
 </html>
